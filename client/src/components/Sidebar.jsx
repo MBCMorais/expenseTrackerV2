@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Nav, Navbar } from 'react-bootstrap';
 import { Route, Routes, Link } from 'react-router-dom';
-import SidebarData from './SidebarData';
+import items from './SidebarData';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-import { IconContext } from 'react-icons';
+import SidebarItem from "./SidebarItem"
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 // import '/dist/sidebar-menu.scss'
 
@@ -15,9 +18,9 @@ const MySidebar = () => {
 	// 	isOpen === true ? setIsopen(false) : setIsopen(true);
 	// };
 
-	const [sidebar, setSidebar] = useState(false);
+	// const [sidebar, setSidebar] = useState(false);
 
-	const showSidebar = () => setSidebar(!sidebar);
+	// const showSidebar = () => setSidebar(!sidebar);
 
 	return (
 		<>
@@ -37,7 +40,7 @@ const MySidebar = () => {
 					})}
 				</Nav>
 			</div> */}
-			<Col md={3}>
+			{/* <Col md={3}>
 				<div className='navbar'>
 					<Link to='#' className='menu-bars'>
 						<FaIcons.FaBars onClick={showSidebar} />
@@ -49,6 +52,36 @@ const MySidebar = () => {
 							<Link to='#' className='menu-bars'>
 								<AiIcons.AiOutlineClose />
 							</Link>
+						</li>
+						<li className='nav-text'>
+							<Link to='/home'>
+								<FontAwesomeIcon icon={faHome} />
+								<span>Home</span>
+							</Link>
+						</li>
+						<li className='nav-text'>
+							<a
+								href='#pageSubmenu'
+								data-toggle='collapse'
+								data-target='#homeSubmenu'
+								aria-expanded='false'
+								aria-label='Toggle navigation'
+								className='dropdown-toggle'
+							>
+								<FontAwesomeIcon icon={faHome} />
+								<span>Expense</span>
+							</a>
+							<ul className='collapse list-unstyled' id='homeSubmenu'>
+								<li>
+									<a href='#'>Home 1</a>
+								</li>
+								<li>
+									<a href='#'>Home 2</a>
+								</li>
+								<li>
+									<a href='#'>Home 3</a>
+								</li>
+							</ul>
 						</li>
 						{SidebarData.map((item, index) => {
 							return (
@@ -62,7 +95,12 @@ const MySidebar = () => {
 						})}
 					</ul>
 				</nav>
-			</Col>
+			</Col> */}
+			<div className='sidebar'>
+				{items.map((item, index) => (
+					<SidebarItem key={index} item={item} />
+				))}
+			</div>
 		</>
 	);
 };
